@@ -11,5 +11,5 @@ class Ingrediente(models.Model):
 class Pizza(models.Model):
 	nombre = models.CharField(max_length = 50)
 	tipoMasa = models.ForeignKey(TipoMasa, on_delete = models.CASCADE)
-	ingredientes = models.ForeignKey(Ingrediente, on_delete = models.CASCADE)
+	ingredientes = models.ManyToManyField(Ingrediente)
 	precio = models.FloatField()	
