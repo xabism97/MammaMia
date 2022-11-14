@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Listado de tipos de masa</title>
+    </head>
+    <body>
+        <div id="content">
+	     <h1>Tipos de masa</h1>
+         <h2>Listado de tipos de masa</h2>
+         {% if lista_tiposmasa %}
+             <ul>
+             {% for t in lista_tiposmasa %}
+                 <li>
+                     <a href="/mammamiaapp/tiposmasa/{{ t.id }}">{{ t.nombre}}</a>
+                 </li>
+             {% endfor %}
+             </ul>
+         {% else %}
+         <p>No hay tipos de masa creados.</p>
+         {% endif %}
+        </div>
+    </body>
+</html>

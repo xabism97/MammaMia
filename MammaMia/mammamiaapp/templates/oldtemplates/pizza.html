@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Listado de pizzas</title>
+    </head>
+    <body>
+        <div id="content">
+	     <h1>Pizzas</h1>
+         <h2>Listado de pizzas</h2>
+         {% if lista_pizzas %}
+             <ul>
+             {% for p in lista_pizzas %}
+                 <li>
+                     <a href="/mammamiaapp/pizzas/{{ p.id }}">{{ p.nombre}}</a>
+                 </li>
+                 <br>
+             {% endfor %}
+             </ul>
+         {% else %}
+         <p>No hay pizzas creadas.</p>
+         {% endif %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Listado de ingredientes</title>
+    </head>
+    <body>
+        <div id="content">
+	     <h1>Ingredientes</h1>
+         <h2>Listado de ingredientes</h2>
+         {% if lista_ingredientes %}
+             <ul>
+             {% for i in lista_ingredientes %}
+                 <li>
+                     <a href="/mammamiaapp/ingredientes/{{ i.id }}">{{ i.nombre}}</a>
+                 </li>
+                 <br>
+             {% endfor %}
+             </ul>
+         {% else %}
+         <p>No hay ingredientes creados.</p>
+         {% endif %}
+        </div>
+    </body>
+</html>
