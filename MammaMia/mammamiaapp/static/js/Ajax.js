@@ -5,13 +5,18 @@ ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.status == 200){
           var messagesArray = JSON.parse(ajaxRequest.responseText);
 
-          var randomIndex = Math.floor(Math.random()*messagesArray.length);
-          var messageObj = messagesArray[randomIndex];
-          console.log(messagesArray);
-
-          var welcomeDiv = document.getElementById("ajax");
-          welcomeDiv.innerHTML = messageObj.fields.nombre;
-          welcomeDiv.style.color = messageObj.color;	
+          var list_html = document.getElementById("ajaxList");
+          for (var i = 0; i < messagesArray.length; i++) {
+            if (messagesArray[i].model == "mammamiaapp.ingrediente") {
+              var li = document.createElement("li");
+              var a = document.createElement('a');
+              a.textContent = messagesArray[i].fields.nombre;
+              a.href = "http://127.0.0.1:8000/ingredientes/" + messagesArray[i].pk;
+              li.appendChild(a);
+              list_html.appendChild(li);
+              console.log(messagesArray[i].fields.nombre);
+            }
+          }
         }
         else{
           console.log("Status error: " + ajaxRequest.status);
