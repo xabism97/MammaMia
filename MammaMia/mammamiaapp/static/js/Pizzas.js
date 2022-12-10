@@ -5,9 +5,7 @@ ajaxRequest.onreadystatechange = function () {
         if(ajaxRequest.status == 200){
           var messagesArray = JSON.parse(ajaxRequest.responseText);
 
-          createList("mammamiaapp.ingrediente", messagesArray);
           createList("mammamiaapp.pizza", messagesArray);
-
         }
         else{
           console.log("Status error: " + ajaxRequest.status);
@@ -26,28 +24,42 @@ function createList(name, array) {
 
   for (let i = 0; i < array.length; i++) {
     if (array[i].model == name) {
+      
       let expanded = false;
-      let li = document.createElement("li");
-      let a = document.createElement('a');
-
       let ul = document.createElement("ul");
-      let listaPizzas = document.createElement("li")
-      let textoPizzas = document.createElement("a");
+      let li = document.createElement("li");
+      let a = document.createElement("a");
+      let ulIngredientes = document.createElement("ul");
+      let tipoMasa = document.createElement('a');
+      let precio = document.createElement('p');
       let linebreak = document.createElement("br");
       let linebreak2 = document.createElement("br");
-      textoPizzas.textContent = "Pizzas que contienen este ingrediente:\n";
-      listaPizzas.append(textoPizzas);
-      //ul.appendChild(textoPizzas);
 
-      for (var y = 0; y < array.length; y++) {
-        if ((array[y].model == "mammamiaapp.pizza") && (array[y].fields.ingredientes.includes(array[i].pk))) {
-          var li2 = document.createElement("li");
-          var a2 = document.createElement("a");
-          a2.textContent = array[y].fields.nombre;
-          li2.appendChild(a2);
-          ul.appendChild(li2);
+
+      for (let z = 0; z < array.length; z++) {
+        console.log(array[i].fields.tipomasa);
+        if ((array[z].model == "mammamiaapp.tipomasa") && (array[i].fields.tipoMasa == array[z].pk)) {
+          console.log("Llega");
+          tipoMasa.textContent = "Tipo de masa: " + array[z].fields.nombre;
         }
       }
+
+      
+      
+
+      for (let z = 0; z < array.length; z++) {
+        if ((array[z].model == "mammamiaapp.ingrediente") && (array[i].fields.ingredientes.includes(array[z].pk))) {
+          var liIngrediente = document.createElement("li");
+          var aIngrediente = document.createElement("a");
+          aIngrediente.textContent = array[z].fields.nombre;
+          liIngrediente.appendChild(aIngrediente);
+          ulIngredientes.appendChild(liIngrediente);
+        }
+      }
+
+      precio.textContent = "Precio: " + array[i].fields.precio + " €";
+      
+
 
       a.addEventListener("click", function(event) {
         if (!expanded) {
@@ -55,16 +67,20 @@ function createList(name, array) {
           
           li.appendChild(linebreak);
           li.appendChild(linebreak2);
-          li.appendChild(textoPizzas);
-          li.appendChild(ul);
+          li.appendChild(tipoMasa);
+          li.appendChild(ulIngredientes);
+          li.appendChild(precio);
           
         } 
         
         else {
-          li.removeChild(ul);
-          li.removeChild(textoPizzas);
+
           li.removeChild(linebreak);
           li.removeChild(linebreak2);
+          li.removeChild(tipoMasa);
+          li.removeChild(ulIngredientes);
+          li.removeChild(precio);
+          
           expanded = false;
         }
       });
