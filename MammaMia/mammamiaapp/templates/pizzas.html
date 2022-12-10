@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %} Nuestras pizzas {% endblock %}
 
 
 {% block content %}
+<script class="u-script" type="text/javascript" src="{% static 'js/Pizzas.js' %}" defer=""></script>
           {% if lista_pizzas %}
              <ul>
              {% for p in lista_pizzas %}

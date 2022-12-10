@@ -1,10 +1,12 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 
 {% block title %} Nuestros ingredientes {% endblock %}
-    
+
+
           {% block content %} 
+          <script class="u-script" type="text/javascript" src="{% static 'js/Ingredientes.js' %}" defer=""></script>
           <div id = "ajax"> 
             <ul id = "ajaxList">
             </ul>

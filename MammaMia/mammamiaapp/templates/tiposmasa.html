@@ -1,18 +1,13 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block title %} Nuestras masas {% endblock %}
 
 
 {% block content %}
-          {% if lista_tiposmasa %}
-             <ul>
-             {% for t in lista_tiposmasa %}
-                 <li>
-                     <a href="/tiposmasa/{{ t.id }}">{{ t.nombre}}</a>
-                 </li>
-                 <br>
-             {% endfor %}
-             </ul>
-         {% endif %}
+<script class="u-script" type="text/javascript" src="{% static 'js/TiposMasa.js' %}" defer=""></script>
+          <div id = "ajax"> 
+            <ul id = "ajaxList">
+            </ul>
+          </div>
 {% endblock %}
