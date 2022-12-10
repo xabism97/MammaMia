@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+
+{% block title %} Nuestros ingredientes {% endblock %}
+
+
+
+
+
+
+{% block content %} 
+{% if ingrediente %}
+            <ul>
+                <li>
+                    {{ ingrediente.nombre}}
+                </li>
+                <br>
+                <li>
+                    {% if lista_pizzas %}
+                    <p>Pizzas que usan este ingrediente:</p>
+                    <ul>
+                        {% for p in lista_pizzas %}
+                            {% for i in p.ingredientes.all %} 
+                                {% if i.id == ingrediente.id %}
+                                <li><a href="/pizzas/{{ p.id }}">{{ p.nombre}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                        <p>No hay pizzas asociadas a este tipo de masa</p>
+                    {% endif %}
+                </li>
+            </ul>
+        {% else %}
+            <p>No existe este ingrediente.</p>
+        {% endif %}  
+{% endblock %}
+     

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block title %} Nuestras masas {% endblock %}
+
+
+{% block content %}
+          {% if lista_tiposmasa %}
+             <ul>
+             {% for t in lista_tiposmasa %}
+                 <li>
+                     <a href="/tiposmasa/{{ t.id }}">{{ t.nombre}}</a>
+                 </li>
+                 <br>
+             {% endfor %}
+             </ul>
+         {% endif %}
+{% endblock %}

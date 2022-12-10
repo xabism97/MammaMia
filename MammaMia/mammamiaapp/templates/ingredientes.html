@@ -5,17 +5,8 @@
 {% block title %} Nuestros ingredientes {% endblock %}
     
           {% block content %} 
-          {% if lista_ingredientes %}
-             <ul>
-             {% for i in lista_ingredientes %}
-                 <li>
-                     <a href="/ingredientes/{{ i.id }}">{{ i.nombre}}</a>
-                 </li>
-                 <br>
-             {% endfor %}
-             </ul>
-         {% else %}
-         <p>No hay ingredientes creados.</p>
-         {% endif %}
+          <div id = "ajax"> 
+            <p>Texto</p>
+          </div>
          {% endblock %}
       

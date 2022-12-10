@@ -10,6 +10,7 @@ urlpatterns = [
     path('ingredientes/<int:ingrediente_id>/', views.show_ingrediente, name='ingrediente_detail'),
     path('tiposmasa', views.index_tiposmasa, name='tiposmasa'),
     path('tiposmasa/<int:tipomasa_id>/', views.show_tipomasa, name='tiposmasa_detail'),
+    path('mammamiadata.json', views.loadjson, name='mammamiadata')
     #path('tiposmasa/<int:tipomasa_id>/', views.get_pizzas, name='tiposmasa_detail')
 ]
 

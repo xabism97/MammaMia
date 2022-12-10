@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block title %} Nuestras pizzas {% endblock %}
+{% block content %} 
+          {% if pizza %}
+            <ul>
+                <li>
+                    {{ pizza.nombre}}
+                </li>
+                <br>
+                <li>
+                    <a href="/tiposmasa/{{ pizza.tipoMasa.id }}/">Tipo de masa: {{ pizza.tipoMasa }}</a>
+                </li>
+                <br>
+                <li>
+                    Ingredientes: <br/>
+                    <ul>
+                    {% for i in pizza.ingredientes.all %} 
+                    <li><a href="/ingredientes/{{i.id}}/">{{ i }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </li>
+                <br>
+                <li>
+                    Precio: {{ pizza.precio}} €
+                </li>
+            </ul>
+        {% else %}
+            <p>No existe esta pizza.</p>
+        {% endif %}
+        {% endblock %}
+     

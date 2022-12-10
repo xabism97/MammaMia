@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Nuestras masas {% endblock %}
+     
+
+{% block content %}
+          {% if lista_pizzas %}
+            <ul>
+                <li>
+                    {{ tipomasa.nombre}}
+                </li>
+                <br>
+                <li>
+                    {% if lista_pizzas %}
+                    <p>Pizzas que usan este tipo de masa:</p>
+                    <ul>
+                        {% for p in lista_pizzas %}
+                            {% if p.tipoMasa.id == tipomasa.id %}
+                                <li><a href="/pizzas/{{ p.id }}">{{ p.nombre}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                        <p>No hay pizzas asociadas a este tipo de masa</p>
+                    {% endif %}
+                </li>
+            </ul>
+        {% else %}
+            <p>No existe este tipo de masa.</p>
+        {% endif %}
+{% endblock %}

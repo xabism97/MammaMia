@@ -1,5 +1,11 @@
 from django.shortcuts import render
 
+from django.conf import settings
+import os
+from pathlib import Path
+import json
+from django.http import JsonResponse
+
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .models import Ingrediente, TipoMasa, Pizza
@@ -50,3 +56,20 @@ def show_tipomasa(request, tipomasa_id):
 	#return HttpResponse(output)
 	context = {'tipomasa': tipomasa, 'lista_pizzas' : pizzas}
 	return render(request, 'tipomasadetail.html', context)
+
+def loadjson(request):
+  my_path = os.path.abspath(os.path.dirname(__file__))
+
+  with open(os.path.join(my_path, 'static/data/mammamiadata.json')) as file:
+    file = json.load(file)
+
+
+  to_json = {
+  	"nombre": "value" 
+  }
+
+  return HttpResponse(json.dumps(file, indent = 1), content_type='application/json')
+
+  
+
+  
