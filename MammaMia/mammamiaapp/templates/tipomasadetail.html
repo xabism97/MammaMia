@@ -15,7 +15,7 @@
                     <ul>
                         {% for p in lista_pizzas %}
                             {% if p.tipoMasa.id == tipomasa.id %}
-                                <li><a href="/mammamiaapp/pizzas/{{ p.id }}">{{ p.nombre}}</a></li>
+                                <li><a href="/pizzas/{{ p.id }}">{{ p.nombre}}</a></li>
                             {% endif %}
                         {% endfor %}
                     </ul>

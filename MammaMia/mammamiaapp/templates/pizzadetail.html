@@ -10,14 +10,14 @@
                 </li>
                 <br>
                 <li>
-                    <a href="/mammamiaapp/tiposmasa/{{ pizza.tipoMasa.id }}/">Tipo de masa: {{ pizza.tipoMasa }}</a>
+                    <a href="/tiposmasa/{{ pizza.tipoMasa.id }}/">Tipo de masa: {{ pizza.tipoMasa }}</a>
                 </li>
                 <br>
                 <li>
                     Ingredientes: <br/>
                     <ul>
                     {% for i in pizza.ingredientes.all %} 
-                    <li><a href="/mammamiaapp/ingredientes/{{i.id}}/">{{ i }}</a></li>
+                    <li><a href="/ingredientes/{{i.id}}/">{{ i }}</a></li>
                     {% endfor %}
                     </ul>
                 </li>

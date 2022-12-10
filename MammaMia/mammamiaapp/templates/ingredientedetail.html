@@ -23,7 +23,7 @@
                         {% for p in lista_pizzas %}
                             {% for i in p.ingredientes.all %} 
                                 {% if i.id == ingrediente.id %}
-                                <li><a href="/mammamiaapp/pizzas/{{ p.id }}">{{ p.nombre}}</a></li>
+                                <li><a href="/pizzas/{{ p.id }}">{{ p.nombre}}</a></li>
                                 {% endif %}
                             {% endfor %}
                         {% endfor %}
