@@ -1,8 +1,6 @@
 var ajaxRequest = new XMLHttpRequest();
 ajaxRequest.onreadystatechange = function () {
 
-console.log("Ingredientes.js cargado")
-
     if(ajaxRequest.readyState == 4){
         if(ajaxRequest.status == 200){
           var messagesArray = JSON.parse(ajaxRequest.responseText);
@@ -46,6 +44,7 @@ function createList(name, array) {
           var li2 = document.createElement("li");
           var a2 = document.createElement("a");
           a2.textContent = array[y].fields.nombre;
+          a2.href = "pizzas/" +array[i].pk;
           li2.appendChild(a2);
           ul.appendChild(li2);
         }
@@ -69,6 +68,16 @@ function createList(name, array) {
           li.removeChild(linebreak2);
           expanded = false;
         }
+      });
+
+      a.addEventListener("mouseover", function(event) {
+        a.style.color = "red";
+        document.body.style.cursor = "pointer";
+      });
+
+      a.addEventListener("mouseout", function(event) {
+        a.style.color = "#6495ED";
+        document.body.style.cursor = "default";
       });
 
       a.setAttribute("style", "backgroundColor");

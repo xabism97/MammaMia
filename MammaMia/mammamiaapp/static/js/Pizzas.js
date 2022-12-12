@@ -39,8 +39,16 @@ function createList(name, array) {
       for (let z = 0; z < array.length; z++) {
         console.log(array[i].fields.tipomasa);
         if ((array[z].model == "mammamiaapp.tipomasa") && (array[i].fields.tipoMasa == array[z].pk)) {
-          console.log("Llega");
           tipoMasa.textContent = "Tipo de masa: " + array[z].fields.nombre;
+          tipoMasa.href = "tiposmasa/" + array[z].pk;
+
+          tipoMasa.addEventListener("mouseover", function(event) {
+            tipoMasa.style.color = "red";
+          });
+
+          tipoMasa.addEventListener("mouseout", function(event) {
+            tipoMasa.style.color = "#6495ED";
+          });
         }
       }
 
@@ -52,13 +60,26 @@ function createList(name, array) {
           var liIngrediente = document.createElement("li");
           var aIngrediente = document.createElement("a");
           aIngrediente.textContent = array[z].fields.nombre;
+
+          aIngrediente.addEventListener("mouseover", function(event) {
+            aIngrediente.style.color = "red";
+          });
+
+          aIngrediente.addEventListener("mouseout", function(event) {
+            aIngrediente.style.color = "#6495ED";
+          });
+
           liIngrediente.appendChild(aIngrediente);
           ulIngredientes.appendChild(liIngrediente);
+
+          aIngrediente.href = "ingredientes/" + array[z].pk;
+
+          
         }
       }
 
       precio.textContent = "Precio: " + array[i].fields.precio + " €";
-      
+      a.style.color = "#6495ED";
 
 
       a.addEventListener("click", function(event) {
@@ -83,6 +104,16 @@ function createList(name, array) {
           
           expanded = false;
         }
+      });
+
+      a.addEventListener("mouseover", function(event) {
+        a.style.color = "red";
+        document.body.style.cursor = "pointer";
+      });
+
+      a.addEventListener("mouseout", function(event) {
+        a.style.color = "#6495ED";
+        document.body.style.cursor = "default";
       });
 
       a.setAttribute("style", "backgroundColor");
